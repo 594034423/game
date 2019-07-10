@@ -1,0 +1,33 @@
+<!--
+使用标签正面样式创建带有图标和标签的标签。
+每个标签的子<ion-nav-view>指令都有自己的
+导航历史，它也转换其视图进出
+-->
+<ion-view view-title="分数: {{ score }} " ng-class='{"shake":gameStop}' >
+	<ion-content id="content">
+
+		<h3 class="text-center">
+			等级: {{ level.name }}. <span class='ion-ios-stopwatch-outline'></span> {{ time }} s
+		<h3>
+		<div class="gameBoard" ng-init="cardStyle = getCardStyle()">
+			<div class="gameRow" ng-repeat="(rowKey,row) in cards">
+				<card
+					ng-repeat = "(cardKey,card) in row"
+					icon      = "card.icon"
+					ng-click  = "checkCard(rowKey,cardKey)"
+					ng-class  = '{"rotate":card.show}'
+					ng-style = "cardStyle"
+				></card>
+			</div>
+		</div>
+		<h4
+			class    = "text-center gameEnd"
+			ng-show  = "gameStop"
+			ng-class = '{"scaleDown":gameStop}'
+		>祝贺 !!! <br> 你获得 {{ score }} 分 </h4>
+	</ion-content>
+	<ion-footer-bar class="text-center bar-assertive">
+		<span class="button button-dark" ng-click="showMenu()">菜单</span>
+		<span class="button button-dark" ng-click="newGame()">重新计时</span>
+	</ion-footer-bar>
+</ion-view>

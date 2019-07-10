@@ -1,0 +1,26 @@
+<!--
+使用标签正面样式创建带有图标和标签的标签。
+每个标签的子<ion-nav-view>指令都有自己的
+导航历史，它也转换其视图进出。
+-->
+<ion-view view-title="选择等级">
+	<ion-content class="padding">
+
+		<button
+			ng-click  = "startGame($index)"
+			class     = "button button-full button-assertive"
+			ng-repeat = "level in gameLevels"
+			>
+
+			<h4><span class="ion-ios-pulse-strong"></span> {{level.name}} <span class="ion-ios-pulse-strong"></span></h4>
+			<h5>
+				{{level.points }}/分数 |
+				<span class="ion-ios-stopwatch-outline"></span> {{level.time}}s
+			</h5>
+
+		</button>
+
+
+
+	</ion-content>
+</ion-view>
